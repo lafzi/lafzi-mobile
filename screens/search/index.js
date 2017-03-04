@@ -12,10 +12,35 @@ import {
     Item,
     Input
 } from 'native-base';
-import { View, StyleSheet, Image, Linking } from 'react-native';
+import { View, StyleSheet, Image, Linking, Keyboard } from 'react-native';
 import { Col, Row, Grid } from 'react-native-easy-grid';
 
 export default class SearchScreen extends Component {
+
+    constructor() {
+        super();
+        this.state = {
+            keyboardShown: false
+        }
+    }
+
+    componentWillMount () {
+        this.keyboardDidShowListener = Keyboard.addListener('keyboardDidShow', this._keyboardDidShow.bind(this));
+        this.keyboardDidHideListener = Keyboard.addListener('keyboardDidHide', this._keyboardDidHide.bind(this));
+    }
+
+    componentWillUnmount () {
+        this.keyboardDidShowListener.remove();
+        this.keyboardDidHideListener.remove();
+    }
+
+    _keyboardDidShow () {
+        this.setState({keyboardShown: true});
+    }
+
+    _keyboardDidHide () {
+        this.setState({keyboardShown: false});
+    }
 
     openHomepage() {
         Linking.openURL('http://cs.ipb.ac.id').catch(err => console.error('An error occurred', err));
@@ -24,7 +49,7 @@ export default class SearchScreen extends Component {
     render() {
         return (
             <Image source={require('../../images/bg-dots.png')} style={styles.backgroundImage}>
-                <Container style={{ backgroundColor: 'transparent' }}>
+                <Container style={{ backgroundColor: (this.state.keyboardShown) ? 'white' : 'transparent' }}>
                     <Header noShadow="true" style={{ backgroundColor: 'transparent' }}>
                         <Left>
                             <Button transparent androidRippleColor="rgba(120, 120, 120, 0.3)">
@@ -65,8 +90,7 @@ export default class SearchScreen extends Component {
 let styles = StyleSheet.create({
   backgroundImage: {
     flex: 1,
-    resizeMode: 'cover', // or 'stretch'
-    width: null,
-    height: null    
+    resizeMode: 'cover',
+    width: null
   }
 });
