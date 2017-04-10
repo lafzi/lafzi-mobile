@@ -4,7 +4,8 @@
   "private": true,
   "scripts": {
     "start": "node node_modules/react-native/local-cli/cli.js start",
-    "test": "jest"
+    "test": "jest",
+    "android-bundle": "react-native bundle --platform android --entry-file index.android.js --bundle-output android/app/src/main/assets/index.android.bu‌​ndle --assets-dest android/app/src/main/res/"
   },
   "dependencies": {
     "native-base": "2.0.11",
