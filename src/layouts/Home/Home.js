@@ -1,4 +1,4 @@
-import {Component} from 'react';
+import { Component } from 'react';
 import {
     Container,
     Header,
@@ -12,10 +12,11 @@ import {
     Item,
     Input
 } from 'native-base';
-import { View, StyleSheet, Image, Linking, Keyboard } from 'react-native';
+import { View, Image, Linking, Keyboard } from 'react-native';
 import { Col, Row, Grid } from 'react-native-easy-grid';
+import styles from './styles';
 
-export default class SearchScreen extends Component {
+export default class Home extends Component {
 
     constructor() {
         super();
@@ -86,11 +87,3 @@ export default class SearchScreen extends Component {
         );
     }
 }
-
-let styles = StyleSheet.create({
-  backgroundImage: {
-    flex: 1,
-    resizeMode: 'cover',
-    width: null
-  }
-});
