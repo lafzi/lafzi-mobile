@@ -15,6 +15,7 @@ import {
 import { View, Image, Linking, Keyboard } from 'react-native';
 import { Col, Row, Grid } from 'react-native-easy-grid';
 import styles from './styles';
+import assets from '../../images';
 
 export default class Home extends Component {
 
@@ -49,7 +50,7 @@ export default class Home extends Component {
 
     render() {
         return (
-            <Image source={require('../../images/bg-dots.png')} style={styles.backgroundImage}>
+            <Image source={require(assets.background)} style={styles.backgroundImage}>
                 <Container style={{ backgroundColor: (this.state.keyboardShown) ? 'white' : 'transparent' }}>
                     <Header noShadow="true" style={{ backgroundColor: 'transparent' }}>
                         <Left>
@@ -61,7 +62,7 @@ export default class Home extends Component {
                     <View style={{ flex: 1 }}>
                         <Grid>
                             <Row style={{justifyContent: 'center', alignItems: 'flex-end', padding: 20}} >
-                                <Image source={require('../../images/logo.png')} style={{ width: 250, height: 110 }} />
+                                <Image source={require(assets.logo)} style={{ width: 250, height: 110 }} />
                             </Row>
                             <Row style={{justifyContent: 'center'}}>
                                 <View>
